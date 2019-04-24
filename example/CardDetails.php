@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * This class is kindly borrowed from eWay as an example
+ * https://github.com/eWAYPayment/eway-rapid-php/blob/master/src/Rapid/Model/CardDetails.php
+ */
+
+namespace Eway\Rapid\Model;
+
+/**
+ * Class CardDetails.
+ *
+ * @property string $SOMEBodyName        Name on the card
+ * @property string $Number      Credit card number (16-21 digits plaintext, Up to 512 chars for eCrypted values)
+ * @property string $Expiry_month 2 Digits
+ * @property string $ExpiryYear  2 or 4 digits e.g. "15" or "2015"
+ * @property string $StartMonth  2 digits (required in some countries)
+ * @property string $StartYear   2 or 4 digits (required in some countries)
+ * @property string $IssueNumber Card issue number (required in some countries)
+ * @property string $CVN         Required for transactions of type Purchase. Optional for other transaction types.
+ *                                (3 or 4 digit number plaintext, up to 512 chars for eCrypted values)
+ */
+class CardDetails extends AbstractModel
+{
+    protected $fillable = [
+        'Name',
+        'Number',
+        'ExpiryMonth',
+        'ExpiryYear',
+        'StartMonth',
+        'StartYear',
+        'IssueNumber',
+        'CVN',
+    ];
+}

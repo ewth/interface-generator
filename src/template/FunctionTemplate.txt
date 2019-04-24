@@ -1,0 +1,2 @@
+    {{PHPDOC}}
+    public function {{FUNCTION_NAME}}({{ARGUMENTS}});
