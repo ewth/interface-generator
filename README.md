@@ -67,8 +67,8 @@ class MyClass implements MyInterface
 
 The specifics may vary depending on whether explicit argument types and return types are set to on.
 
-Note that it uses 4 spaces as tabs (because if you do otherwise you're a monster), and it sets the typehinting return for
-the setters to `$this` to allow for chaining (because if you do otherwise you're also a monster).
+Note that it uses 4 spaces as tabs (because if you do otherwise you're a monster! :stuck_out_tongue_winking_eye:), and it sets the typehinting return for
+the setters to `$this` to allow for chaining (because if you do otherwise you're also a monster! :stuck_out_tongue_winking_eye:).
 
 
 ### Usage
