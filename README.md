@@ -45,3 +45,22 @@ For a simple demonstration:
 `php run.php`
 
 See `run.php` for how it works with the class.
+
+### Configuration
+
+The following properties offer some configuration at runtime:
+```
+protected $outputDir = '';
+protected $overwriteFiles = false;
+protected $generateClasses = false;
+protected $useExplicitTypes = false;
+protected $php7ReturnTypes = false;
+```
+
+Property|Description
+---|---
+`$outputDir` | Directory the output files should be written.
+`$overwriteFiles` | Overwrite existing files. **This is destructure, be careful.**
+`$generateClasses` | Generate accompanying classes that implement the interfaces. To save time essentially.
+`$argumentTypes` | Explicitly state the argument type in the function. Will be typehinted in PHPDoc regardless.
+`$returnTypes` | Generate functions with PHP7 return types. Will be typehinted in PHPDoc regardless.

@@ -8,8 +8,10 @@ $generator = new InterfaceGenerator();
 
 // Setup generator
 $generator->setOutputDir(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'output')
-          ->setOverwriteFiles(false)
-          ->setUseExplicitTypes(true);
+          ->setOverwriteFiles(true)
+          ->setArgumentTypes(true)
+          ->setReturnTypes(true)
+          ->setGenerateClasses(true);
 
 // Loop through classes in example dir and load all into class
 $files = glob(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'example' . DIRECTORY_SEPARATOR . '*.php');
@@ -20,7 +22,7 @@ foreach ($files as $file) {
 
 echo "Files added.\n";
 
-echo "Generating interfaces...\n";
+echo "Generating output files...\n";
 // Begin generating interfaces
 $generator->generate();
 

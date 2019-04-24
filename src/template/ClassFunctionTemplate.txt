@@ -1,0 +1,5 @@
+    {{PHPDOC}}
+    public function {{FUNCTION_NAME}}({{ARGUMENTS}}){{RETURN_TYPE}}
+    {
+        {{FUNCTION}}
+    }
