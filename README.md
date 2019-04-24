@@ -19,21 +19,53 @@ It expects classes to be in a similar format to in the `input` directory.
 It will generate interfaces in the form:
 
 ```
-interface MyCoolInterface
+interface MyInterface
 {
     /**
      * @return string
      */
-    function getMyProperty($);
+    public function getName(): string;
 
     /**
-     * @param string $myProperty
+     * @param string $name
      *
      * @return $this
      */
-    function setMyProperty($myProperty);
+    public function setName(string $name): self;
 }
 ```
+
+And classes:
+
+```
+class MyClass implements MyInterface
+{
+    /** @var string $name */
+    protected $name;
+    
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+    
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function setName(string $name): MyInterface
+    {
+        $this->name = $name;
+        
+        return $this;
+    }
+}
+```
+
+The specifics may vary depending on whether explicit argument types and return types are set to on.
 
 Note that it uses 4 spaces as tabs (because if you do otherwise you're a monster), and it sets the typehinting return for
 the setters to `$this` to allow for chaining (because if you do otherwise you're also a monster).
