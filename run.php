@@ -18,5 +18,10 @@ foreach ($files as $file) {
     $generator->addClass($file);
 }
 
+echo "Files added.\n";
+
+echo "Generating interfaces...\n";
 // Begin generating interfaces
 $generator->generate();
+
+echo "\nDone!\n";
