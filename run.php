@@ -14,7 +14,7 @@ $generator->setOutputDir(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'output')
           ->setGenerateClasses(true);
 
 // Loop through classes in example dir and load all into class
-$files = glob(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'example' . DIRECTORY_SEPARATOR . '*.php');
+$files = glob(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'input' . DIRECTORY_SEPARATOR . '*.php');
 foreach ($files as $file) {
     echo "Adding $file\n";
     $generator->addClass($file);

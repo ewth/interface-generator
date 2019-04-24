@@ -14,7 +14,7 @@ doesn't seem able to do so for interfaces.
 
 ### Notes
 
-It expects classes to be in a similar format to in the `example` directory.
+It expects classes to be in a similar format to in the `input` directory.
 
 It will generate interfaces in the form:
 
