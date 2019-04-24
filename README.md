@@ -37,3 +37,11 @@ interface MyCoolInterface
 
 Note that it uses 4 spaces as tabs (because if you do otherwise you're a monster), and it sets the typehinting return for
 the setters to `$this` to allow for chaining (because if you do otherwise you're also a monster).
+
+
+### Usage
+For a simple demonstration:
+
+`php run.php`
+
+See `run.php` for how it works with the class.
