@@ -120,6 +120,9 @@ class InterfaceGenerator
 
     }
 
+    /**
+     * Load all specified class files to parse their content.
+     */
     private function loadFiles()
     {
         foreach ($this->classFiles as $key => $filePath) {
@@ -243,8 +246,8 @@ class InterfaceGenerator
                             if ($propertyType && $propertyType != 'mixed') {
                                 $arguments = $propertyType . ' ';
                             }
-                            $arguments = trim($arguments . '$' . $propertyVariable);
                         }
+                        $arguments = trim($arguments . '$' . $propertyVariable);
                         $function = str_replace('{{ARGUMENTS}}', $arguments, $function);
                         $function = str_replace('{{PHPDOC}}', implode("\n    ", $phpDoc), $function);
 
@@ -277,6 +280,10 @@ class InterfaceGenerator
         }
     }
 
+    /**
+     * Write interfaces to files.
+     * @throws \Exception
+     */
     private function writeInterfaces()
     {
         $outputDir = $this->outputDir . DIRECTORY_SEPARATOR;
@@ -285,13 +292,16 @@ class InterfaceGenerator
         foreach ($this->interfaces as $key => $interface) {
             $outputFile = $this->classes[$key] . 'Interface.php';
             if (file_exists($outputDir . $outputFile)) {
-                if (!$this->useExplicitTypes) {
+                if (!$this->overwriteFiles) {
                     continue;
                 }
             }
             if (!empty($this->interfaces[$key])) {
-                echo "Writing to $outputFile\n";
-                file_put_contents($outputDir . $outputFile, $this->interfaces[$key]);
+                try {
+                    file_put_contents($outputDir . $outputFile, $this->interfaces[$key]);
+                } catch (\Exception $e) {
+                    throw $e;
+                }
             }
         }
     }
@@ -299,8 +309,7 @@ class InterfaceGenerator
     /**
      * @return bool
      */
-    public
-    function getUseExplicitTypes()
+    public function getUseExplicitTypes()
     {
         return $this->useExplicitTypes;
     }
@@ -310,9 +319,8 @@ class InterfaceGenerator
      *
      * @return $this
      */
-    public
-    function setUseExplicitTypes($useExplicitTypes
-    ) {
+    public function setUseExplicitTypes($useExplicitTypes)
+    {
         $this->useExplicitTypes = $useExplicitTypes;
 
         return $this;
@@ -325,8 +333,7 @@ class InterfaceGenerator
      *
      * @return array
      */
-    private
-    function loadPublic()
+    private function loadPublic()
     {
         return [];
     }
@@ -338,8 +345,7 @@ class InterfaceGenerator
      *
      * @return array
      */
-    private
-    function loadPrivate()
+    private function loadPrivate()
     {
         return [];
     }
@@ -351,8 +357,7 @@ class InterfaceGenerator
      *
      * @return array
      */
-    private
-    function loadProtected()
+    private function loadProtected()
     {
         return [];
     }
@@ -364,9 +369,8 @@ class InterfaceGenerator
      *
      * @return array
      */
-    private
-    function getPublic($classContent
-    ) {
+    private function getPublic($classContent)
+    {
         return [];
     }
 
@@ -377,9 +381,8 @@ class InterfaceGenerator
      *
      * @return array
      */
-    private
-    function getPrivate($classContent
-    ) {
+    private function getPrivate($classContent)
+    {
         return [];
     }
 
@@ -390,9 +393,8 @@ class InterfaceGenerator
      *
      * @return array
      */
-    private
-    function getProtected($classContent
-    ) {
+    private function getProtected($classContent)
+    {
         return [];
     }
 }
